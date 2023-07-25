@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 					printed_chars += printf("%i", va_arg(arguments, int));
 					break;
 				case 'd':
-					printed_chars += printf("%d", va_arg(arguments, char *));
+					printed_chars += printf("%d", va_arg(arguments, int));
 					break;
 			}
 		}
