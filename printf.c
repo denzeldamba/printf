@@ -14,13 +14,11 @@ int _printf(const char *format, ...)
 	va_list arguments;
 
 	va_start(arguments, format);
-
 	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
 			format++;
-
 			switch (*format)
 			{
 				case 'c':
@@ -38,16 +36,33 @@ int _printf(const char *format, ...)
 				case 'i':
 					printed_chars += printf("%i", va_arg(arguments, int));
 					break;
+				case 'b':
+					print_binary(va_arg(arguments, unsigned int));
+					break;
 				default:
 					printed_chars += printf("%c", *format);
 			}
 		}
 		else
-		{
 			printed_chars += printf("%c", *format);
-		}
 		format++;
 	}
 	va_end(arguments);
 	return (printed_chars);
+}
+
+/**
+ * print_binary - Print an unsigned int in binary
+ * @n: Number to print in binary
+ *
+ * Return: Chars printed
+ */
+void print_binary(unsigned int n)
+{
+	int i;
+
+	for (i = sizeof(n) * 8 - 1; i >= 0; i--)
+	{
+		putchar(n >> i & 1 ? '1' : '0');
+	}
 }
