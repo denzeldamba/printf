@@ -1,7 +1,6 @@
-#include <stdarg.h>
 #include <stdio.h>
 #include "main.h"
-
+#include <stdarg.h>
 /**
  * _printf - Custom printf function
  * @format: The format string
